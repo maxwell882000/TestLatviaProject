@@ -17,7 +17,7 @@ namespace TestProject.Controllers
         [HttpGet]
         public IActionResult GetListOfChanges(DateTime? from, DateTime? to)
         {
-            return Ok(this.productAudit.GetAll().Filter(from: from, to: to));
+            return Ok(this.productAudit.GetAll().Filter(from: from, to: to).ToList());
         }
     }
 }
