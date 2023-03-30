@@ -21,8 +21,8 @@ namespace TestProject.Seeds
         public async Task seed()
         {
             this.logger.LogWarning("Started SEED PROCESS");
-            // this.productSeed.seed();
-            // this.roleSeed.seed();
+            this.productSeed.seed();
+            this.roleSeed.seed();
             await this.userAdmin.seed();
             this.logger.LogWarning("ENDED SEED PROCESS");
         }
