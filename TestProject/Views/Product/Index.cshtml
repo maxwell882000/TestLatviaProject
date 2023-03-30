@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1 class="display-4">Product Calculation Page</h1>
+    <div>
+ @if(User.IsInRole(RoleType.ADMIN.ToString())){
+    <a href="@Url.Action("Create", "ProductChange")"
+    class="btn btn-warning mb-4">Create</a>
+    }
+    </div>
+   
+
+    @model List<ProductShow>
+    @(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Title).Titled("Item name");
+        columns.Add(model => model.Quantity).Titled("Quantity");
+        columns.Add(model => model.Price).Titled("Price");
+        columns.Add(model => model.TotalPriceWithVTO).Titled("Total price with VAT");
+        if (User.IsInRole(RoleType.ADMIN.ToString())) 
+        columns.Add(model => $"<a  href=\"{@Url.Action("Edit", "ProductChange", new { id = model.Id})}\" class=\"btn btn-success\"\">Edit</a>").Encoded(false).Titled("Action");
+    })
+    .Using(GridFilterMode.Excel)
+    .Empty("No data found")
+    .Filterable()
+    .Sortable()
+)
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+

@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div>
+ @using (Html.BeginForm("Create", "ProductChange", FormMethod.Post)) {
+    <label >Item name</label>
+    <input class="form-control mb-2" type="text"    required name="Title">
+    <label> Quantiy </label>
+    <input class="form-control mb-2" type="number"    required name="Quantity">
+    <label> Price </label>
+    <input class="form-control mb-2" type="number"   required name="Price">
+    <input class="btn btn-warning" type="submit">
+    }
+</div>
